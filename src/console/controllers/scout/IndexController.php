@@ -102,7 +102,10 @@ class IndexController extends BaseController
 
         // Run the queue after adding all elements
         $this->stdout(Craft::t('scout', 'Running queue jobs...'.PHP_EOL), Console::FG_GREEN);
-        Craft::$app->queue->run();
+
+        // Passing repeat argument required by the version of run() implemented
+        // by the Redis yii component \yii\queue\redis\Queue
+        Craft::$app->queue->run(false);
 
         // Everything went OK
         return ExitCode::OK;
