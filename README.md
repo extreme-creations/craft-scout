@@ -15,6 +15,11 @@ This plugin is licensed under a MIT license, which means that it's completely fr
 
 [![Beerpay](https://beerpay.io/riasvdv/craft-scout/badge.svg?style=beer-square)](https://beerpay.io/riasvdv/craft-scout)
 
+## Extreme Changes
+Environments that implement the Redis yii Queue component need to pass a required 'repeat' argument to the run() function.
+Using the standard Scout plugin with the Redis Queue component results in the error `Too few arguments to function yii\queue\redis\Queue::run()` when performing an import.
+The Redis version of `queue->run()` expects 1 param whereas the craft version doesn't take any.
+
 ## Requirements
 
 This plugin requires Craft CMS 3.0.0-RC1 or later.
